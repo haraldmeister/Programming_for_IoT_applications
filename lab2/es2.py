@@ -4,51 +4,51 @@ import json
 
 class Calculator():
     def __init__(self):
-        self.operand1=[]
-        self.operand2=[]
-        self.operation=[]
-        self.result=[]
-        self.instance={'operation':[],'operand1':[],'operand2':[],'result':[]}
+        self.operand1  =[]
+        self.operand2  =[]
+        self.operation =[]
+        self.result    =[]
+        self.instance  ={'operation':[],'operand1':[],'operand2':[],'result':[]}
     def add(self,operand1,operand2):
-        self.operand1=operand1
-        self.operand2=operand2
-        self.operation="Add"
-        self.result=float(operand1)+float(operand2)
-        self.instance['operation']='Add'
-        self.instance['operand1']=operand1
-        self.instance['operand2']=operand2
-        self.instance['result']=self.result
+        self.operand1              =operand1
+        self.operand2              =operand2
+        self.operation             ="Add"
+        self.result                =float(operand1)+float(operand2)
+        self.instance['operation'] ='Add'
+        self.instance['operand1']  =operand1
+        self.instance['operand2']  =operand2
+        self.instance['result']    =self.result
 
     def sub(self,operand1,operand2):
-        self.operand1=operand1
-        self.operand2=operand2
-        self.operation="Subtraction"
-        self.result=float(operand1)-float(operand2)
-        self.instance['operation']='Subtraction'
-        self.instance['operand1']=operand1
-        self.instance['operand2']=operand2
-        self.instance['result']=self.result
+        self.operand1              =operand1
+        self.operand2              =operand2
+        self.operation             ="Subtraction"
+        self.result                =float(operand1)-float(operand2)
+        self.instance['operation'] ='Subtraction'
+        self.instance['operand1']  =operand1
+        self.instance['operand2']  =operand2
+        self.instance['result']    =self.result
     def mul(self,operand1,operand2):
-        self.operand1=float(operand1)
-        self.operand2=float(operand2)
-        self.operation="Multiplication"
-        self.result=float(operand1)*float(operand2)
-        self.instance['operation']='Multiplication'
-        self.instance['operand1']=float(operand1)
-        self.instance['operand2']=float(operand2)
-        self.instance['result']=self.result
+        self.operand1              =float(operand1)
+        self.operand2              =float(operand2)
+        self.operation             ="Multiplication"
+        self.result                =float(operand1)*float(operand2)
+        self.instance['operation'] ='Multiplication'
+        self.instance['operand1']  =float(operand1)
+        self.instance['operand2']  =float(operand2)
+        self.instance['result']    =self.result
     def div(self,operand1,operand2):
-        self.operand1=operand1
-        self.operand2=operand2
-        self.operation="Division"
+        self.operand1  =operand1
+        self.operand2  =operand2
+        self.operation ="Division"
         try:
             self.result=float(operand1)/float(operand2)
         except ZeroDivisionError:
             print("Errore divisione per zero\n")
-        self.instance['operation']='Division'
-        self.instance['operand1']=operand1
-        self.instance['operand2']=operand2
-        self.instance['result']=self.result
+        self.instance['operation'] ='Division'
+        self.instance['operand1']  =operand1
+        self.instance['operand2']  =operand2
+        self.instance['result']    =self.result
 
 class add(object):
     exposed = True
