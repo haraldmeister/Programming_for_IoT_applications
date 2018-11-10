@@ -63,40 +63,28 @@ class Calculator():
         self.instance['operands']  =operands
         self.instance['result']    =self.result
 
-class add(object):
-    exposed = True
-
-    def PUT (self, *uri, **params):
+class service(object):
+    exposed= True
+    @cherrypy.tools.json_in()
+    @cherrypy.tools.json_out()
+    def PUT(self,*uri,**params):
+        rawbody=cherrypy.request.json
+        operands=rawbody['operands']
+        command=rawbody['command']
         op=Calculator()
-        operands=tuple(float(f) for f in uri)
-        op.add(operands)
-        return json.dumps(op.instance)
+        if command=='add':
+            op.add(operands)
+            return json.dumps(op.instance)
+        if command=='sub':
+            op.sub(operands)
+            return json.dumps(op.instance)
+        if command=='mul':
+            op.mul(operands)
+            return json.dumps(op.instance)
+        if command=='div':
+            op.div(operands)
+            return json.dumps(op.instance)
 
-class sub(object):
-    exposed = True
-    def PUT (self, *uri, **params):
-        op=Calculator()
-        operands=tuple(float(f) for f in uri)
-        op.sub(operands)
-        return json.dumps(op.instance)
-
-
-class mul(object):
-    exposed = True
-    def PUT (self, *uri, **params):
-        op=Calculator()
-        operands=tuple(float(f) for f in uri)
-        op.mul(operands)
-        return json.dumps(op.instance)
-
-
-class div(object):
-    exposed = True
-    def PUT (self, *uri, **params):
-        op=Calculator()
-        operands=tuple(float(f) for f in uri)
-        op.div(operands)
-        return json.dumps(op.instance)
 
 if __name__ == '__main__':
     conf = {
@@ -105,10 +93,7 @@ if __name__ == '__main__':
             'tools.sessions.on': True
         }
     }
-    cherrypy.tree.mount(add(), '/add', conf)
-    cherrypy.tree.mount(sub(), '/sub', conf)
-    cherrypy.tree.mount(mul(), '/mul', conf)
-    cherrypy.tree.mount(div(), '/div', conf)
+    cherrypy.tree.mount(service(), '/', conf)
 
     cherrypy.config.update({'server.socket_host': '0.0.0.0'})
     cherrypy.config.update({'server.socket_port': 8080})
