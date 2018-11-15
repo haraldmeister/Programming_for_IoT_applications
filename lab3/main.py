@@ -6,7 +6,7 @@ while True:
     c=input("Operation needed to do with the two operands\n")
 
     if a=="quit" or b=="quit" or c=="quit":
-        print("Quitting program...")
+        print("Quitting program....")
         break
 
     operand1=float(a)
